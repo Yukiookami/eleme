@@ -61,7 +61,7 @@
     <div class="line"></div>
     <!-- 推荐商家 -->
     <rec-title :title="recMiseTitle" :important="recMiseImportant"></rec-title>
-    <sort-bar></sort-bar>
+    <sort-bar id="sortBar" :sortBarFixed='sortBarFixed'></sort-bar>
     <div style="height: 100vh"></div>
     <!-- 推荐商家end -->
     <!-- 购物车小图标 -->
@@ -250,6 +250,8 @@ export default {
 
         }
       ],
+      // 排序选择框固定
+      sortBarFixed: false,
       // 购物车
       slide: true,
       slideTsu: false,
@@ -260,14 +262,25 @@ export default {
     // 滑动屏幕时保证input与header的切换
     let fakerInput = document.getElementById('fakerInput')
     let fakerFather = document.getElementById('header')
+    let sortBar = document.getElementById('sortBar')
     let that = this
     window.onscroll = () => {
+      // 搜索框dom
       let {y: header} = fakerFather.getBoundingClientRect()
       let {y} = fakerInput.getBoundingClientRect()
+      // 选择器dom
+      let {y: sortBarY} = sortBar.getBoundingClientRect()
+      // 搜索框固定控制
       if (y <= 0) {
         that.fakerInputFixed = true
       } else if (header > -55) {
         that.fakerInputFixed = false
+      }
+      // 选择器固定控制
+      if (sortBarY < 45) {
+        that.sortBarFixed = true
+      } else {
+        that.sortBarFixed = false
       }
     }
   },

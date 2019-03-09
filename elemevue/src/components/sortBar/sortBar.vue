@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="sort-sec" :class="{'sort-sec-fixed': isSelect}">
+    <div class="sort-sec" id="sortSec" :class="{'sort-sec-fixed': isSelect || sortBarFixed}">
       <div class="select-box" id="selectBox" @click="change()">
         <span class="sort-show-text" :class="{'change-color': isSelect}"
         v-text="sortList[sortNum].sortByT"></span>
@@ -18,12 +18,13 @@
         v-if="sortNum === index" alt="">
       </div>
     </div>
-    <div class="back-mask" :class="{'show-mask': isSelect}"></div>
+    <div class="back-mask" @click="change()" :class="{'show-mask': isSelect}"></div>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['sortBarFixed'],
   data () {
     return {
       sortNum: 0,
@@ -70,6 +71,7 @@ export default {
     },
     changeNum (index) {
       this.sortNum = index
+      this.isSelect = !this.isSelect
     }
   }
 }

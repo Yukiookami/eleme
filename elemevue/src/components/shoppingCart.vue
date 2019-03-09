@@ -1,5 +1,5 @@
 <template>
-  <div class="shopping-box" :class="{'slide-change': slide}">
+  <div class="shopping-box" :class="{'slide-change': slide === false}">
     <img src="../assets/images/shoppingCart/shoppingCart.svg" alt="">
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
 <style scoped>
 .shopping-box {
   position: fixed;
-  bottom: 25vh;
+  bottom: 15vh;
   right: 1rem;
   display: flex;
   justify-content: center;
