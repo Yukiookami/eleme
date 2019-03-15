@@ -62,7 +62,14 @@
     <!-- 推荐商家 -->
     <rec-title :title="recMiseTitle" :important="recMiseImportant"></rec-title>
     <sort-bar id="sortBar" :sortBarFixed='sortBarFixed'></sort-bar>
-    <div style="height: 100vh"></div>
+    <div>
+      <home-rec-mise v-for="(item, index) in recMiseList" :key="index"
+      :miseImg='item.miseImg' :miseName='item.miseName'
+      :startOkane='item.startOkane' :okuruOkane='item.okuruOkane'
+      :time='item.time' :kyori='item.kyori' :star='item.star'
+      :point='item.point' :sellNum='item.sellNum' :miseType='item.miseType'
+      :waribikiList='item.waribikiList'></home-rec-mise>
+    </div>
     <!-- 推荐商家end -->
     <!-- 购物车小图标 -->
     <shopping-cart :slide = 'slide'></shopping-cart>
@@ -80,6 +87,7 @@ import recTitle from '../components/recTitle'
 import miseOsusume from '../components/miseOsusume'
 import shoppingCart from '../components/shoppingCart'
 import sortBar from '../components/sortBar/sortBar'
+import homeRecMise from '../components/recMise/homeRecMise'
 
 export default {
   name: 'HelloWorld',
@@ -247,7 +255,136 @@ export default {
       recMiseImportant: false,
       recMiseList: [
         {
-
+          miseImg: require('../assets/images/swiper/bilibiliH.jpeg'),
+          miseName: '哔哩哔哩 (゜-゜)つロ 干杯~-bilibili',
+          startOkane: '15¥',
+          okuruOkane: '免配送费',
+          time: '20分钟',
+          kyori: '200m',
+          point: 4.7,
+          sellNum: 2000,
+          miseType: '生活周边',
+          waribikiList: [
+            {
+              waribikiTypeName: '减',
+              waribikiTypeClass: 'low',
+              waribiki: '满18减8，满29减13，满38减18，满68减30，满98减40'
+            },
+            {
+              waribikiTypeName: '首',
+              waribikiTypeClass: 'fir',
+              waribiki: '新用户下单立减17元'
+            },
+            {
+              waribikiTypeName: '会',
+              waribikiTypeClass: 'vip',
+              waribiki: '超级会员可领6元红包'
+            },
+            {
+              waribikiTypeName: '票',
+              waribikiTypeClass: 'lyo',
+              waribiki: '该商家支持开发票,请在下单时填写好发票抬头'
+            }
+          ]
+        },
+        {
+          miseImg: require('../assets/images/swiper/bilibiliH.jpeg'),
+          miseName: '哔哩哔哩 (゜-゜)つロ 干杯~-bilibili',
+          startOkane: '15¥',
+          okuruOkane: '免配送费',
+          time: '20分钟',
+          kyori: '200m',
+          point: 4.7,
+          sellNum: 2000,
+          miseType: '生活周边',
+          waribikiList: [
+            {
+              waribikiTypeName: '减',
+              waribikiTypeClass: 'low',
+              waribiki: '满18减8，满29减13，满38减18，满68减30，满98减40'
+            },
+            {
+              waribikiTypeName: '首',
+              waribikiTypeClass: 'fir',
+              waribiki: '新用户下单立减17元'
+            },
+            {
+              waribikiTypeName: '会',
+              waribikiTypeClass: 'vip',
+              waribiki: '超级会员可领6元红包'
+            },
+            {
+              waribikiTypeName: '票',
+              waribikiTypeClass: 'lyo',
+              waribiki: '该商家支持开发票,请在下单时填写好发票抬头'
+            }
+          ]
+        },
+        {
+          miseImg: require('../assets/images/swiper/bilibiliH.jpeg'),
+          miseName: '哔哩哔哩 (゜-゜)つロ 干杯~-bilibili',
+          startOkane: '15¥',
+          okuruOkane: '免配送费',
+          time: '20分钟',
+          kyori: '200m',
+          point: 4.7,
+          sellNum: 2000,
+          miseType: '生活周边',
+          waribikiList: [
+            {
+              waribikiTypeName: '减',
+              waribikiTypeClass: 'low',
+              waribiki: '满18减8，满29减13，满38减18，满68减30，满98减40'
+            },
+            {
+              waribikiTypeName: '首',
+              waribikiTypeClass: 'fir',
+              waribiki: '新用户下单立减17元'
+            },
+            {
+              waribikiTypeName: '会',
+              waribikiTypeClass: 'vip',
+              waribiki: '超级会员可领6元红包'
+            },
+            {
+              waribikiTypeName: '票',
+              waribikiTypeClass: 'lyo',
+              waribiki: '该商家支持开发票,请在下单时填写好发票抬头'
+            }
+          ]
+        },
+        {
+          miseImg: require('../assets/images/swiper/bilibiliH.jpeg'),
+          miseName: '哔哩哔哩 (゜-゜)つロ 干杯~-bilibili',
+          startOkane: '15¥',
+          okuruOkane: '免配送费',
+          time: '20分钟',
+          kyori: '200m',
+          point: 4.7,
+          sellNum: 2000,
+          miseType: '生活周边',
+          waribikiList: [
+            {
+              waribikiTypeName: '减',
+              waribikiTypeClass: 'low',
+              waribiki: '满18减8，满29减13，满38减18，满68减30，满98减40'
+            },
+            {
+              waribikiTypeName: '首',
+              waribikiTypeClass: 'fir',
+              waribiki: '新用户下单立减17元'
+            },
+            {
+              waribikiTypeName: '会',
+              waribikiTypeClass: 'vip',
+              waribiki: '超级会员可领6元红包'
+            },
+            {
+              waribikiTypeName: '票',
+              waribikiTypeClass: 'lyo',
+              waribiki: '该商家支持开发票,请在下单时填写好发票抬头'
+            }
+          ]
         }
       ],
       // 排序选择框固定
@@ -307,7 +444,8 @@ export default {
     recTitle,
     miseOsusume,
     shoppingCart,
-    sortBar
+    sortBar,
+    homeRecMise
   }
 }
 </script>

@@ -1,11 +1,33 @@
 <template>
   <div>
     <div class="sort-sec" id="sortSec" :class="{'sort-sec-fixed': isSelect || sortBarFixed}">
-      <div class="select-box" id="selectBox" @click="change()">
+      <div class="select-box" id="selectBox" @click="change(), changeSelect()">
         <span class="sort-show-text" :class="{'change-color': isSelect}"
         v-text="sortList[sortNum].sortByT"></span>
         <img class="ajirushi" :src="sortImg" alt="" v-if="isSelect === false">
         <img class="ajirushi" :src="sortImgSelect" alt="" v-if="isSelect">
+      </div>
+      <div class="select-box kyouri-box" @click="sortByKyouriClick(), change()">
+        <span class="sort-show-text"
+        :class="{'is-kyouri': isSortByKyouri}">
+          {{sortByKyouri}}
+        </span>
+      </div>
+      <div class="select-box vip-box" @click="sortVipClick(), change()">
+        <img src="../../assets/images/sortBar/king.svg" alt="">
+        <span class="sort-show-text"
+        :class="{'is-kyouri': isSortByVip}">
+          {{sortVip}}
+        </span>
+      </div>
+      <div class="select-box fitter-box" @click="sortFilterClick(), change()">
+        <span class="sort-show-text" :class="{'is-fitter': isSortByFilter}">
+          {{sortFilter}}
+        </span>
+        <img v-if="!isSortByFilter"
+        src="../../assets/images/sortBar/filter.svg" alt="">
+        <img v-if="isSortByFilter"
+        src="../../assets/images/sortBar/filter-select.svg" alt="">
       </div>
     </div>
     <div class="sort-list" :class="{'show-sort-list': isSelect}">
@@ -31,6 +53,12 @@ export default {
       sortImg: require('../../assets/images/sortBar/ajirushi-shita.svg'),
       sortImgSelect: require('../../assets/images/sortBar/ajirushi-ue.svg'),
       isSelect: false,
+      sortByKyouri: '距离最近',
+      isSortByKyouri: false,
+      sortVip: '会员领红包',
+      isSortByVip: false,
+      sortFilter: '筛选',
+      isSortByFilter: false,
       sortList: [
         {
           sortByT: '综合排序'
@@ -63,15 +91,28 @@ export default {
     }
   },
   methods: {
+    // 锚点跳转
     change () {
       let selectBox = document.getElementById('selectBox')
-      // 锚点跳转
       selectBox.scrollIntoView(true)
+    },
+    changeSelect () {
       this.isSelect = !this.isSelect
     },
     changeNum (index) {
       this.sortNum = index
       this.isSelect = !this.isSelect
+    },
+    sortByKyouriClick () {
+      this.isSortByKyouri = !this.isSortByKyouri
+      this.isSortByFilter = false
+    },
+    sortVipClick () {
+      this.isSortByVip = !this.isSortByVip
+      this.isSortByFilter = false
+    },
+    sortFilterClick () {
+      this.isSortByFilter = !this.isSortByFilter
     }
   }
 }
@@ -83,6 +124,9 @@ export default {
   position: relative;
   width: 92%;
   height: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: .35rem 4%;
   background-color: #FFF;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
@@ -108,6 +152,34 @@ export default {
   text-overflow: ellipsis;
   font-size: 14px;
   color: #666;
+}
+
+.kyouri-box {
+  width: 17%;
+}
+
+.is-kyouri {
+  color: #000;
+}
+
+.is-fitter {
+  color: #1296db;
+}
+
+.vip-box {
+  width: 26%;
+}
+
+.vip-box img {
+  width: 20%;
+}
+
+.fitter-box {
+  width: 12%;
+}
+
+.fitter-box img {
+  width: 30%;
 }
 
 .ajirushi {
